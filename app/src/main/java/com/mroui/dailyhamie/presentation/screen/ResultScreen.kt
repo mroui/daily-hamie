@@ -1,5 +1,8 @@
 package com.mroui.dailyhamie.presentation.screen
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -55,13 +58,12 @@ internal fun ResultScreen(
             modifier = Modifier
                 .background(Color.White)
                 .fillMaxWidth()
+                .animateContentSize(spring(Spring.DampingRatioMediumBouncy))
                 .clickable(
                     indication = null,
                     interactionSource = remember { MutableInteractionSource() }
                 ) {
-                    if (!expanded) {
-                        expanded = true
-                    }
+                    expanded = true
                 }
         ) {
             Column(
