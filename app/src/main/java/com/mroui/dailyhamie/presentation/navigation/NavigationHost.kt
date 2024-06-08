@@ -1,5 +1,7 @@
 package com.mroui.dailyhamie.presentation.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +33,22 @@ fun DailyHamieNavigation() {
         NavHost(
             navController = navController,
             startDestination = Screen.Home.route,
+            enterTransition = {
+                //fadeIn(tween(700))
+                //scaleIn(spring(Spring.DampingRatioLowBouncy))
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Start,
+                    animationSpec = tween(500)
+                )
+            },
+            exitTransition = {
+                //fadeOut(tween(700))
+                //scaleOut(spring(Spring.DampingRatioLowBouncy))
+                slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Start,
+                    animationSpec = tween(500)
+                )
+            }
         ) {
             composable(route = Screen.Home.route) { HomeScreen(navController) }
             composable(Screen.Quiz.route) { QuizScreen(navController, quizResult) }
