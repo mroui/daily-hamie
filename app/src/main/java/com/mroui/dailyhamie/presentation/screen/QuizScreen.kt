@@ -1,5 +1,6 @@
 package com.mroui.dailyhamie.presentation.screen
 
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -27,9 +28,12 @@ internal fun QuizScreen(
     navController: NavController,
     quizResult: MutableMap<QuestionType, String> = mutableMapOf()
 ) {
-
     var questionIndex by remember { mutableIntStateOf(0) }
     val currentQuestion = QUESTIONS_DATA_SET[questionIndex]
+
+    val progress by animateFloatAsState(
+        targetValue = (questionIndex + 1) / QUESTIONS_DATA_SET.size.toFloat()
+    )
 
     QuizContent {
         Text(
@@ -39,7 +43,7 @@ internal fun QuizScreen(
             modifier = Modifier.padding(bottom = 16.dp)
         )
         LinearProgressIndicator(
-            progress = { (questionIndex + 1) / QUESTIONS_DATA_SET.size.toFloat() },
+            progress = { progress },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 32.dp),
@@ -50,6 +54,7 @@ internal fun QuizScreen(
             modifier = Modifier.padding(bottom = 16.dp)
         )
         currentQuestion.answers.forEach { answer ->
+
             Button(
                 onClick = {
                     quizResult[currentQuestion.type] = answer
