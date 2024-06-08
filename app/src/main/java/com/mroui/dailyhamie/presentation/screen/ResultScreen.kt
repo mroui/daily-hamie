@@ -102,7 +102,7 @@ internal fun ResultScreen(
                     Button(
                         onClick = {
                             navController.navigate(Screen.Home.route) {
-                                popUpTo(Screen.Home.route) { inclusive = true }
+                                popUpTo(Screen.Result.route) { inclusive = true }
                             }
                         },
                         modifier = Modifier
