@@ -15,12 +15,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.mroui.dailyhamie.R
-import com.mroui.dailyhamie.presentation.component.ScreenBox
+import com.mroui.dailyhamie.presentation.component.QuizContent
 import com.mroui.dailyhamie.presentation.model.Screen
 
 @Composable
 internal fun HomeScreen(navController: NavController) {
-    ScreenBox {
+    QuizContent {
         Image(
             painter = painterResource(id = R.drawable.hamster_image),
             contentDescription = "Hamster image",

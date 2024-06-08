@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.mroui.dailyhamie.data.QUESTIONS_DATA_SET
-import com.mroui.dailyhamie.presentation.component.ScreenBox
+import com.mroui.dailyhamie.presentation.component.QuizContent
 import com.mroui.dailyhamie.presentation.model.QuestionType
 import com.mroui.dailyhamie.presentation.model.Screen
 
@@ -31,7 +31,7 @@ internal fun QuizScreen(
     var questionIndex by remember { mutableIntStateOf(0) }
     val currentQuestion = QUESTIONS_DATA_SET[questionIndex]
 
-    ScreenBox {
+    QuizContent {
         Text(
             text = "${questionIndex + 1} of ${QUESTIONS_DATA_SET.size}",
             style = MaterialTheme.typography.labelLarge,

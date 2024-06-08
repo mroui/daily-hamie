@@ -32,7 +32,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.mroui.dailyhamie.R
 import com.mroui.dailyhamie.data.determineResult
-import com.mroui.dailyhamie.presentation.component.ScreenBox
+import com.mroui.dailyhamie.presentation.component.QuizContent
 import com.mroui.dailyhamie.presentation.model.HamsterActivity
 import com.mroui.dailyhamie.presentation.model.HamsterMood
 import com.mroui.dailyhamie.presentation.model.QuestionType
@@ -50,7 +50,7 @@ internal fun ResultScreen(
         HamsterActivity.entries.first { it.label == quizResult[QuestionType.ACTIVITY] },
     )
 
-    ScreenBox {
+    QuizContent {
         Surface(
             modifier = Modifier
                 .background(Color.White)
